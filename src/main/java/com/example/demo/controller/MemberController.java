@@ -14,7 +14,7 @@ public class MemberController {
 
     @PostMapping
     public String create() {
-        System.out.println("Home Controller");
+
 
         return "/hello";
     }
@@ -22,6 +22,7 @@ public class MemberController {
     @GetMapping
     public String findAll() {
         memberService.findAll();
+        System.out.println(memberService.findAll());
         return "/hello";
     }
 

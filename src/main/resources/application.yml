@@ -1,5 +1,4 @@
-server:
-  port:8088
+
 spring:
   thymeleaf:
     suffix: .html
@@ -16,3 +15,6 @@ spring:
     password:
 mybatis:
   type-aliases-package: com.example.demo.domain
+
+server:
+  port: 8088
