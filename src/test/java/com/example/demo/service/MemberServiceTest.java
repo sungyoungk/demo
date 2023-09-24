@@ -8,8 +8,8 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @SpringBootTest
@@ -18,11 +18,11 @@ class MemberServiceTest {
     private MemberService memberService;
 
     @Test
+    @Transactional
     void 사용자_데이터가_정상적으로_저장되는지_확인한다() {
 
         //given
         MemberCreateRequestDto memberCreateRequestDto = new MemberCreateRequestDto();
-
 
         String name = "이름";
         String email = "test@email.com";
@@ -49,6 +49,7 @@ class MemberServiceTest {
     }
 
     @Test
+    @Transactional
     void 사용자_정보가_업데이트_되었는지_확인() {
         //given
         MemberUpdatedRequestDto memberUpdatedRequestDto = new MemberUpdatedRequestDto();
@@ -74,6 +75,7 @@ class MemberServiceTest {
     }
 
     @Test
+    @Transactional
     void 사용자가_삭제되었는지_확인하기() {
         // given
         MemberDeleteRequestDto deleteRequestDto = new MemberDeleteRequestDto();
