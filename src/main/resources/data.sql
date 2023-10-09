@@ -8,3 +8,12 @@ VALUES
     ('Michael Davis', 'michaeldavis@example.com', '2023-09-10 00:00:00', '2023-09-10 00:00:00', 'Admin', 'Admin'),
     ('Sarah Wilson', 'sarahwilson@example.com', '2023-09-10 00:00:00', '2023-09-10 00:00:00', 'Admin', 'Admin'),
     ('David Miller', 'davidmiller@example.com', '2023-09-10 00:00:00', '2023-09-10 00:00:00', 'Admin', 'Admin');
+
+INSERT INTO ARTICLE(title, content, createdDate, updatedDate, createdBy, updatedBy)
+    VALUES
+        ('First Article', 'This is the content of the first article', now(), NULL, 'SungYoung Kim', NULL);
+
+
+
+
+

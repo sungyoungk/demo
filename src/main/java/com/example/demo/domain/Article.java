@@ -1,14 +1,14 @@
 package com.example.demo.domain;
 
 import lombok.Getter;
-import lombok.ToString;
 
 import java.time.LocalDateTime;
 
 @Getter
-public class Member {
-    private String name;
-    private String email;
+public class Article {
+
+    private String title;
+    private String content;
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
     private String createdBy;
