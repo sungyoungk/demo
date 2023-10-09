@@ -1,10 +1,8 @@
 package com.example.demo.controller;
 
-import com.example.demo.domain.Article;
-import com.example.demo.service.ArticleService;
+import com.example.demo.domain.Post;
+import com.example.demo.service.PostService;
 import lombok.RequiredArgsConstructor;
-import org.apache.ibatis.annotations.Delete;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +13,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 @RequiredArgsConstructor
 public class PostController {
 
-    private final ArticleService articleService;
+    private final PostService postService;
 
     @GetMapping("/post")
     public String post() {
@@ -24,21 +22,22 @@ public class PostController {
     }
 
     @GetMapping("/post/{articleId}")
-    public Article getArticle(@PathVariable Long articleId) {
+    public Post getArticle(@PathVariable Long postId) {
         System.out.println("get article by articleId");
-        return articleService.findByArticleId();
+        postService.findById(postId);
+        return null;
     }
 
     @PutMapping("/post/{articleId}")
     public void saveArticle(@PathVariable Long articleId) {
         System.out.println("save article");
-        articleService.saveArticle(articleId);
+       //  articleService.saveArticle(articleId);
     }
 
     @DeleteMapping
     public void deleteArticle(@PathVariable Long articleId) {
 
-        articleService.deleteArticle(articleId);
+        // articleService.deleteArticle(articleId);
     }
 
 }
