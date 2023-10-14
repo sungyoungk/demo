@@ -37,9 +37,9 @@ class PostServiceTest {
         Assertions.assertThat(post.getTitle()).isEqualTo(title);
         Assertions.assertThat(post.getContent()).isEqualTo(content);
         Assertions.assertThat(post.getCreatedBy()).isEqualTo(createdBy);
-        Assertions.assertThat(post.getUpdatedDate()).isEqualTo(now);
+        // Assertions.assertThat(post.getUpdatedDate()).isEqualTo(now);
         Assertions.assertThat(post.getUpdatedBy()).isEqualTo(updatedBy);
-        Assertions.assertThat(post.getCreatedDate()).isEqualTo(now);
+        // Assertions.assertThat(post.getCreatedDate()).isEqualTo(now);
     }
 
     @Test
@@ -71,17 +71,15 @@ class PostServiceTest {
     void 게시글이_수정되는지_확인(){
 
         PostUpdateRequestDto postUpdateRequestDto = new PostUpdateRequestDto();
-        LocalDateTime now = LocalDateTime.now();
 
-        postUpdateRequestDto.update(1L, "변경 제목", "변경 내용", now, "testUpdatedBy");
-        postService.update(postUpdateRequestDto);
+        postUpdateRequestDto.updateById("변경 제목", "변경 내용", "testUpdatedBy");
+        postService.updateById(1L, postUpdateRequestDto);
 
          Post post = postService.findById(1L);
 
          Assertions.assertThat(post.getTitle()).isEqualTo("변경 제목");
          Assertions.assertThat(post.getContent()).isEqualTo("변경 내용");
          Assertions.assertThat(post.getUpdatedBy()).isEqualTo("testUpdatedBy");
-         Assertions.assertThat(post.getUpdatedDate()).isEqualTo(now);
 
     }
 

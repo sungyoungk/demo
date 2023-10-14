@@ -1,0 +1,24 @@
+
+### 게시글 등록  API
+POST http://localhost:8088/post
+Content-Type: application/json
+
+{
+  "title" : "제목",
+  "content" : "내용",
+  "createdBy" : "김성영",
+  "updatedBy" : "SungYoung Kim"
+}
+
+### 게시글 수정  API
+PUT http://localhost:8088/post/1
+Content-Type: application/json
+
+{
+  "title" : "변경된 제목",
+  "content" : "변경된 내용"
+}
+
+### 게시글 삭제  API
+DELETE http://localhost:8088/post/2
+Content-Type: application/json

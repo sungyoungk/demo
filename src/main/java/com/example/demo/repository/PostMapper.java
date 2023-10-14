@@ -22,12 +22,12 @@ public interface PostMapper {
     void deleteArticle(Long postId);
 
     @Insert("INSERT INTO POST(title, content, createdDate, updatedDate, createdBy, updatedBy)" +
-            "VALUES(#{title}, #{content}, #{createdDate}, #{updatedDate}, #{createdBy}, #{updatedBy})")
+            "VALUES(#{title}, #{content}, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, #{createdBy}, #{updatedBy})")
     void create(PostCreateRequestDto postCreateRequestDto);
 
-    @Update("UPDATE POST SET title= #{title}, content= #{content}, updatedBy=#{updatedBy}, updatedDate=#{updatedDate} WHERE id = #{id}")
-    void update(PostUpdateRequestDto postUpdateRequestDto);
+    @Update("UPDATE POST SET title= #{postUpdateRequestDto.title}, content= #{postUpdateRequestDto.content}, updatedBy=#{postUpdateRequestDto.updatedBy}, updatedDate=CURRENT_TIMESTAMP WHERE id = #{postId}")
+    void updateById(Long postId, PostUpdateRequestDto postUpdateRequestDto);
 
-    @Delete("DELETE FROM POST WHERE id = #{id}")
-    void deleteById(Long id);
+    @Delete("DELETE FROM POST WHERE id = #{postId}")
+    void deleteById(Long postId);
 }

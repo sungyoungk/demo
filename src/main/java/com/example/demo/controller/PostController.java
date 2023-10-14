@@ -4,10 +4,7 @@ import com.example.demo.domain.Post;
 import com.example.demo.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequiredArgsConstructor
@@ -21,23 +18,32 @@ public class PostController {
         return "/post";
     }
 
-    @GetMapping("/post/{articleId}")
-    public Post getArticle(@PathVariable Long postId) {
-        System.out.println("get article by articleId");
+    @PostMapping("/post")
+    @ResponseBody
+    public void createPost(@RequestBody PostCreateRequestDto postCreateRequestDto) {
+        postService.create(postCreateRequestDto);
+    }
+
+    @GetMapping("/post/{postId}")
+    @ResponseBody
+    public Post findById(@PathVariable Long postId) {
         postService.findById(postId);
         return null;
     }
 
-    @PutMapping("/post/{articleId}")
-    public void saveArticle(@PathVariable Long articleId) {
-        System.out.println("save article");
+    @PutMapping("/post/{postId}")
+    @ResponseBody
+    public void updateById(@PathVariable Long postId, @RequestBody PostUpdateRequestDto postUpdateRequestDto) {
+        postService.updateById(postId, postUpdateRequestDto);
+
        //  articleService.saveArticle(articleId);
     }
 
-    @DeleteMapping
-    public void deleteArticle(@PathVariable Long articleId) {
+    @DeleteMapping("/post/{postId}")
+    @ResponseBody
+    public void delteById(@PathVariable Long postId) {
 
-        // articleService.deleteArticle(articleId);
+        postService.deleteById(postId);
     }
 
 }

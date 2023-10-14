@@ -15,33 +15,23 @@ public class PostService {
 
     private final PostMapper postMapper;
 
-
-
     public List<Post> findAll() {
        return postMapper.findAll();
     }
 
-    public Post findById(Long articleId) {
-        return postMapper.findById(articleId);
-    }
-
-    public void saveArticle(Long articleId) {
-        postMapper.saveArticle(articleId);
-    }
-
-    public void deleteArticle(Long articleId) {
-        postMapper.deleteArticle(articleId);
+    public Post findById(Long postId) {
+        return postMapper.findById(postId);
     }
 
     public void create(PostCreateRequestDto postCreateRequestDto) {
         postMapper.create(postCreateRequestDto);
     }
 
-    public void update(PostUpdateRequestDto postUpdateRequestDto) {
-        postMapper.update(postUpdateRequestDto);
+    public void updateById(Long postId, PostUpdateRequestDto postUpdateRequestDto) {
+        postMapper.updateById(postId, postUpdateRequestDto);
     }
 
-    public void deleteById(Long id) {
-        postMapper.deleteById(id);
+    public void deleteById(Long postId) {
+        postMapper.deleteById(postId);
     }
 }
