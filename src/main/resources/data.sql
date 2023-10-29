@@ -11,7 +11,9 @@ VALUES
 
 INSERT INTO POST(title, content, createdDate, updatedDate, createdBy, updatedBy)
     VALUES
-        ('First Article', 'This is the content of the first article', now(), NULL, 'SungYoung Kim', NULL);
+        ('첫 번재 포스팅', '첫 번째 포스팅 입니다', now(), NULL, 'SungYoung Kim', NULL),
+        ('안녕하세요', '성영님 안녕하세요', now(), NULL, 'Lee lee', NULL),
+        ('질문이 있습니다', '질문', now(), NULL, 'SungYoung Kim', NULL);
 
 
 

@@ -6,12 +6,9 @@ import lombok.ToString;
 import java.time.LocalDateTime;
 
 @Getter
-public class Member {
+public class Member extends BaseDomain {
     private String name;
     private String email;
-    private LocalDateTime createdDate;
-    private LocalDateTime updatedDate;
-    private String createdBy;
-    private String updatedBy;
+
 
 }

@@ -5,14 +5,14 @@ import lombok.Getter;
 import java.time.LocalDateTime;
 
 @Getter
-public class Post {
+public class Post extends BaseDomain {
 
+    private Long id;
     private String title;
     private String content;
-    private LocalDateTime createdDate;
-    private LocalDateTime updatedDate;
-    private String createdBy;
-    private String updatedBy;
+
+    private BaseDomain baseDomain;
+
 
     public void create(String title, String content, LocalDateTime createdDate, LocalDateTime updatedDate, String updatedBy ,String createdBy) {
         this.title = title;

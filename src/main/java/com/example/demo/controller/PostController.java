@@ -4,7 +4,10 @@ import com.example.demo.domain.Post;
 import com.example.demo.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
@@ -19,9 +22,12 @@ public class PostController {
     }
 
     @PostMapping("/post")
-    @ResponseBody
-    public void createPost(@RequestBody PostCreateRequestDto postCreateRequestDto) {
+    public String createPost(@ModelAttribute PostCreateRequestDto postCreateRequestDto, Model model) {
         postService.create(postCreateRequestDto);
+
+        List<Post> posts = postService.findAll();
+        model.addAttribute("posts", posts);
+        return "/index";
     }
 
     @GetMapping("/post/{postId}")
@@ -31,17 +37,24 @@ public class PostController {
         return null;
     }
 
-    @PutMapping("/post/{postId}")
-    @ResponseBody
-    public void updateById(@PathVariable Long postId, @RequestBody PostUpdateRequestDto postUpdateRequestDto) {
-        postService.updateById(postId, postUpdateRequestDto);
 
-       //  articleService.saveArticle(articleId);
+    @GetMapping("/modifyPost")
+    public String updateByIdView(@RequestParam Long postId, Model model) {
+        Post post = postService.findById(postId);
+        model.addAttribute("post", post);
+
+        return "/modifyPost";
+    }
+
+    @ResponseBody
+    @PutMapping("/post/{postId}")
+    public void updateById(@PathVariable Long postId, @RequestBody PostUpdateRequestDto postUpdateRequestDto, Model model) {
+        postService.updateById(postId, postUpdateRequestDto);
     }
 
     @DeleteMapping("/post/{postId}")
     @ResponseBody
-    public void delteById(@PathVariable Long postId) {
+    public void deleteById(@PathVariable Long postId) {
 
         postService.deleteById(postId);
     }

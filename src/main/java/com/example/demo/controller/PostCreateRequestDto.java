@@ -1,9 +1,12 @@
 package com.example.demo.controller;
 
 import lombok.Getter;
+import lombok.Setter;
+
 import java.time.LocalDateTime;
 
 @Getter
+@Setter
 public class PostCreateRequestDto {
 
     private String title;

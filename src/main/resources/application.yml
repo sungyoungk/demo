@@ -2,6 +2,7 @@
 spring:
   thymeleaf:
     suffix: .html
+    cache: false
 
   h2:
     console:

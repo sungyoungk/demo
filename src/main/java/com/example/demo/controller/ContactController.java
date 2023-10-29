@@ -10,6 +10,6 @@ public class ContactController {
     public String about() {
         System.out.println("about page");
 
-        return "/contact";
+        return "createPost";
     }
 }
